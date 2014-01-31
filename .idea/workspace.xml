@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fc2684c-e74e-4701-866b-2c4823ffc332" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/users/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/users/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/brewery.rb" afterPath="$PROJECT_DIR$/app/models/brewery.rb" />
     </list>
     <ignored path="ratebeer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,37 +37,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="5" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/users/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="18" column="13" selection-start="557" selection-end="557" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="585">
-              <folding />
+              <folding>
+                <marker date="1391185459000" expanded="true" signature="96:364" placeholder="..." />
+                <marker date="1391185459000" expanded="true" signature="216:349" placeholder="..." />
+                <marker date="1391185459000" expanded="true" signature="437:542" placeholder="..." />
+                <marker date="1391185459000" expanded="true" signature="580:674" placeholder="..." />
+                <marker date="1391185459000" expanded="true" signature="698:818" placeholder="..." />
+                <marker date="1391185459000" expanded="true" signature="844:877" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="edit.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/users/edit.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="215" selection-end="215" vertical-scroll-proportion="0.1472192" vertical-offset="0" max-vertical-offset="917">
+            <state line="9" column="0" selection-start="215" selection-end="215" vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="brewery.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="breweries_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/breweries_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="12" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="107" max-vertical-offset="1380">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="brewery.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/brewery.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="41" selection-start="76" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+            <state line="30" column="0" selection-start="743" selection-end="743" vertical-scroll-proportion="0.47821465" vertical-offset="0" max-vertical-offset="941">
               <folding />
             </state>
           </provider>
@@ -155,7 +160,6 @@
         <option value="$PROJECT_DIR$/app/views/ratings/index.html.erb" />
         <option value="$PROJECT_DIR$/app/models/rating.rb" />
         <option value="$PROJECT_DIR$/app/views/ratings/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/brewery.rb" />
         <option value="$PROJECT_DIR$/app/models/beer.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20140131143934_create_beer_clubs.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20140131144126_create_memberships.rb" />
@@ -177,6 +181,7 @@
         <option value="$PROJECT_DIR$/app/views/users/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/users/edit.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/brewery.rb" />
       </list>
     </option>
   </component>
@@ -719,13 +724,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/breweries_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="12" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1380">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20140123151448_create_ratings.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
@@ -912,14 +910,14 @@
     <entry file="file://$PROJECT_DIR$/app/views/users/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="13" selection-start="557" selection-end="557" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="585">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/brewery.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="41" selection-start="76" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-          <folding />
+          <folding>
+            <marker date="1391185459000" expanded="true" signature="96:364" placeholder="..." />
+            <marker date="1391185459000" expanded="true" signature="216:349" placeholder="..." />
+            <marker date="1391185459000" expanded="true" signature="437:542" placeholder="..." />
+            <marker date="1391185459000" expanded="true" signature="580:674" placeholder="..." />
+            <marker date="1391185459000" expanded="true" signature="698:818" placeholder="..." />
+            <marker date="1391185459000" expanded="true" signature="844:877" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -953,7 +951,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="215" selection-end="215" vertical-scroll-proportion="0.1472192" vertical-offset="0" max-vertical-offset="917">
+        <state line="9" column="0" selection-start="215" selection-end="215" vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/breweries_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="12" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1380">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/brewery.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="0" selection-start="743" selection-end="743" vertical-scroll-proportion="0.47821465" vertical-offset="0" max-vertical-offset="941">
           <folding />
         </state>
       </provider>
