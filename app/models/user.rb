@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates :password, format:  {with: /(?=.*[A-Z])(?=.*\d)/,
   message: "Password must contain at least one uppercase character from A-Z, and at least one number"}
 
-  has_many :ratings # käyttäjällä on monta ratingia
+  has_many :ratings, :dependent => :destroy # käyttäjällä on monta ratingia
   has_many :beers, through: :ratings
   has_many :memberships, :dependent => :destroy
   has_many :beer_clubs, through: :memberships
