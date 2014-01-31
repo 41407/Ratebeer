@@ -11,7 +11,20 @@
   <%= link_to 'Breweries', breweries_path %>
   <%= link_to 'Beers', beers_path %>
   <%= link_to 'Ratings', ratings_path %>
+|
+  <% if not current_user.nil? %>
+
+      <%= link_to current_user.username, current_user %>
+      <%= link_to 'Rate a beer', new_rating_path %>
+      <%= link_to 'Sign out', signout_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Sign in', new_session_path %>
+      <%= link_to 'Sign up', new_user_path %>
+
+  <% end %>
 </div>
+
+
 
 <%= yield %>
 
