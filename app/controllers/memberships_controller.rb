@@ -26,6 +26,7 @@ class MembershipsController < ApplicationController
   # POST /memberships.json
   def create
     @membership = Membership.new(membership_params)
+    @beer_clubs = BeerClub.all
 
     respond_to do |format|
       if @membership.save
