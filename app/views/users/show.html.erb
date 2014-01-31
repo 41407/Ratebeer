@@ -4,6 +4,15 @@
   <%= @user.username %>
 </h1>
 
+<p> This user is a member of following beer clubs: </p>
+
+<ul>
+  <% @user.beer_clubs.each do |club| %>
+      <li>
+        <%= link_to club.name , club %>
+      </li>
+  <% end %>
+</ul>
 
 <p>
   <% if @user.ratings.empty? %>
