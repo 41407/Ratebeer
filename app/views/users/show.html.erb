@@ -9,7 +9,7 @@
 <ul>
   <% @user.beer_clubs.each do |club| %>
       <li>
-        <%= link_to club.name , club %>
+        <%= link_to club.name, club %>
       </li>
   <% end %>
 </ul>
@@ -22,13 +22,19 @@
     <ul>
       <% @user.ratings.each do |rating| %>
           <li>
-            <%= rating.to_s %>
-            <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
-                </li>
+            <%= rating %>
+            <% if @user == current_user %>
+                <%= link_to 'delete', rating, method: :delete, data: {confirm: 'Are you sure?'} %>
+            <% end %>
+          </li>
       <% end %>
     </ul>
-  <% end %>
+<% end %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<% if current_user == @user %>
+    <%= link_to 'Destroy user', @user, method: :delete, data: {confirm: 'Are you sure?'} %> |
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+<% end %>
+
 <%= link_to 'Back', users_path %>
