@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   end
 
   def favorite_style
+    return nil if ratings.empty?
+
     # Alustetaan uusi hajautustaulu
     hash = Hash.new
 
