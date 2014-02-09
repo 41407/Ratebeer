@@ -9,8 +9,6 @@ describe "Beer" do
       fill_in('beer_name', with: 'Koira')
 
       click_button "Create Beer"
-
-      save_and_open_page
     end
   end
 end
