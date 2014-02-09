@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
     return nil if session[:user_id].nil?
     User.find(session[:user_id])
   end
+
+  def ensure_that_user_is_admin
+    return nil if current_user.nil?
+    redirect_to :back, notice:'You need to be an admin to do that' unless current_user.admin?
+  end
 end
