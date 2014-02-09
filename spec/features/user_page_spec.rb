@@ -37,4 +37,14 @@ describe "User page" do
       page.first(:link, "delete").click
     }.to change{Rating.count}.by(-1)
   end
+
+  it "shows user's favorite beer style" do
+    visit user_path(user)
+    expect(page).to have_content "Favorite style"
+  end
+
+  it "shows user's favorite beer style" do
+    visit user_path(user)
+    expect(page).to have_content "Favorite brewery"
+  end
 end
