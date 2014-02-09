@@ -12,11 +12,11 @@ describe "User page" do
     sign_in(username: "Pekka", password: "Foobar1")
     FactoryGirl.create :rating, beer_id: beer1.id, score: 24, user: user
     FactoryGirl.create :rating, beer_id: beer2.id, score: 21, user: user
-    FactoryGirl.create :rating, beer_id: beer2.id, score: 23, user: user2
   end
 
   it "shows all ratings made by that user and none of others" do
 
+    FactoryGirl.create :rating, beer_id: beer2.id, score: 23, user: user2
     @ratings = Rating.all
 
     visit user_path(user)
@@ -29,6 +29,12 @@ describe "User page" do
         expect(page).to_not have_content expected_content
       end
     end
-    save_and_open_page
+  end
+
+  it "allows deleting ratings from database" do
+    visit user_path(user)
+    expect{
+      page.first(:link, "delete").click
+    }.to change{Rating.count}.by(-1)
   end
 end

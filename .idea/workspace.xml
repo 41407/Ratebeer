@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fc2684c-e74e-4701-866b-2c4823ffc332" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/features/user_page_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/features/beer_spec.rb" afterPath="$PROJECT_DIR$/spec/features/beer_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories.rb" afterPath="$PROJECT_DIR$/spec/factories.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/features/ratings_page_spec.rb" afterPath="$PROJECT_DIR$/spec/features/ratings_page_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/features/user_page_spec.rb" afterPath="$PROJECT_DIR$/spec/features/user_page_spec.rb" />
     </list>
     <ignored path="ratebeer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,7 +67,7 @@
       <file leaf-file-name="user_page_spec.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/features/user_page_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="5" selection-start="670" selection-end="670" vertical-scroll-proportion="0.23340249" vertical-offset="0" max-vertical-offset="964">
+            <state line="38" column="0" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.5912863" vertical-offset="0" max-vertical-offset="964">
               <folding />
             </state>
           </provider>
@@ -981,7 +977,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/features/user_page_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="5" selection-start="670" selection-end="670" vertical-scroll-proportion="0.23340249" vertical-offset="0" max-vertical-offset="964">
+        <state line="38" column="0" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.5912863" vertical-offset="0" max-vertical-offset="964">
           <folding />
         </state>
       </provider>
