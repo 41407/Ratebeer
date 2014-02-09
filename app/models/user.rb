@@ -37,4 +37,20 @@ class User < ActiveRecord::Base
     # Palautetaan hashin suurin avain
     hash.max_by{|k,v| v}[0]
   end
+
+  def favorite_brewery
+    return nil if ratings.empty?
+
+    # Alustetaan uusi hajautustaulu
+    hash = Hash.new
+
+    # Haetaan ensin kaikki käyttäjän arvostelemat panimot hashiin
+    ratings.each {|r| hash[(Brewery.find_by id:((Beer.find_by id: r.beer_id).brewery_id)).name] = 0}
+
+    # Kasvatetaan kunkin panimon saamaa kokonaispistemäärää
+    ratings.each {|r| hash[(Brewery.find_by id:((Beer.find_by id: r.beer_id).brewery_id)).name] = hash[(Brewery.find_by id:((Beer.find_by id: r.beer_id).brewery_id)).name]+r.score}
+
+    # Palautetaan hashin suurin avain
+    hash.max_by{|k,v| v}[0]
+  end
 end

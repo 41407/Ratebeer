@@ -18,7 +18,11 @@
   <% if @user.ratings.empty? %>
       This user hasn't rated any beers.
   <% else %>
+    <p>Favorite style: <%= @user.favorite_style %>   </p>
+    <p>Favorite brewery: <%= @user.favorite_brewery %>   </p>
       This user has made <%= pluralize(@user.ratings.count, 'rating') %>, average <%= @user.average_rating %>
+
+
     <ul>
       <% @user.ratings.each do |rating| %>
           <li>
