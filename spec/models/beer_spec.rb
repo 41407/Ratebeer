@@ -9,12 +9,12 @@ describe Beer do
 
   end
   describe "is not created if" do
-    it "name is not given" do
+    it "name is undefined" do
       beer = Beer.create style: "Lager"
 
       expect(beer).not_to be_valid
     end
-    it "style is not given" do
+    it "style is undefined" do
       beer = Beer.create name: "Testiolut"
 
       expect(beer).not_to be_valid

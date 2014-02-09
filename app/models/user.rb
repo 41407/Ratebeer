@@ -17,4 +17,22 @@ class User < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :beer_clubs, through: :memberships
 
+  def favorite_beer
+    return nil if ratings.empty?
+    ratings.order(score: :desc).limit(1).first.beer
+  end
+
+  def favorite_style
+    # Alustetaan uusi hajautustaulu
+    hash = Hash.new
+
+    # Haetaan ensin kaikki käyttäjän arvostelemat tyylit hashiin
+    ratings.each {|r| hash[(Beer.find_by id:r.beer_id).style] = 0}
+
+    # Kasvatetaan kunkin tyylin saamaa kokonaispistemäärää
+    ratings.each {|r| hash[(Beer.find_by id:r.beer_id).style] = hash[(Beer.find_by id:r.beer_id).style]+r.score}
+
+    # Palautetaan hashin suurin avain
+    hash.max_by{|k,v| v}[0]
+  end
 end
