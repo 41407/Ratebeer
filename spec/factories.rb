@@ -29,4 +29,8 @@ FactoryGirl.define do
     brewery
     style "Lager"
   end
+
+  factory :beer_club do
+    name "anonymous"
+  end
 end
