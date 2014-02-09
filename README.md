@@ -1,4 +1,5 @@
-== README
+Ratebeer
+========
 
 Linkki Heroku-palvelimelle:
 http://hidden-sands-4841.herokuapp.com/
