@@ -1,11 +1,19 @@
 require 'spec_helper'
 
 describe "Places" do
-  it "if one is returned by the API, it is shown at the page" do
+  before :each do
     BeermappingApi.stub(:places_in).with("kumpula").and_return(
         [Place.new(:name => "Oljenkorsi")]
     )
+    BeermappingApi.stub(:places_in).with("Kannelmäki").and_return(
+        [Place.new(:name => "Britannia"), Place.new(:name => "William K.")]
+    )
+    BeermappingApi.stub(:places_in).with("otaniemi").and_return(
+        []
+    )
+  end
 
+  it "if one is returned by the API, it is shown at the page" do
     visit places_path
     fill_in('city', with: 'kumpula')
     click_button "Search"
@@ -14,10 +22,6 @@ describe "Places" do
   end
 
   it "if multiple are returned by API, all of those are shown at the page" do
-    BeermappingApi.stub(:places_in).with("Kannelmäki").and_return(
-        [Place.new(:name => "Britannia"), Place.new(:name => "William K.")]
-    )
-
     visit places_path
     fill_in('city', with: 'Kannelmäki')
     click_button "Search"
