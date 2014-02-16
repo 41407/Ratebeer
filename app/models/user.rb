@@ -4,13 +4,13 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :username, uniqueness: true,
-                       length:    {minimum: 3,
-                                   maximum: 15}
+            length: {minimum: 3,
+                     maximum: 15}
 
 
-  validates :password, length:  {minimum: 4}
-  validates :password, format:  {with: /(?=.*[A-Z])(?=.*\d)/,
-  message: "Password must contain at least one uppercase character from A-Z, and at least one number"}
+  validates :password, length: {minimum: 4}
+  validates :password, format: {with: /(?=.*[A-Z])(?=.*\d)/,
+                                message: "Password must contain at least one uppercase character from A-Z, and at least one number"}
 
   has_many :ratings, :dependent => :destroy # käyttäjällä on monta ratingia
   has_many :beers, through: :ratings
@@ -22,35 +22,34 @@ class User < ActiveRecord::Base
     ratings.order(score: :desc).limit(1).first.beer
   end
 
-  def favorite_style
-    return nil if ratings.empty?
-
-    # Alustetaan uusi hajautustaulu
-    hash = Hash.new
-
-    # Haetaan ensin kaikki käyttäjän arvostelemat tyylit hashiin
-    ratings.each {|r| hash[(Beer.find_by id:r.beer_id).style] = 0}
-
-    # Kasvatetaan kunkin tyylin saamaa kokonaispistemäärää
-    ratings.each {|r| hash[(Beer.find_by id:r.beer_id).style] = hash[(Beer.find_by id:r.beer_id).style]+r.score}
-
-    # Palautetaan hashin suurin avain
-    hash.max_by{|k,v| v}[0]
-  end
-
   def favorite_brewery
     return nil if ratings.empty?
+    favorite :brewery
+  end
 
-    # Alustetaan uusi hajautustaulu
-    hash = Hash.new
 
-    # Haetaan ensin kaikki käyttäjän arvostelemat panimot hashiin
-    ratings.each {|r| hash[(Brewery.find_by id:((Beer.find_by id: r.beer_id).brewery_id)).name] = 0}
+  def favorite_style
+    return nil if ratings.empty?
+    favorite :style
+  end
 
-    # Kasvatetaan kunkin panimon saamaa kokonaispistemäärää
-    ratings.each {|r| hash[(Brewery.find_by id:((Beer.find_by id: r.beer_id).brewery_id)).name] = hash[(Brewery.find_by id:((Beer.find_by id: r.beer_id).brewery_id)).name]+r.score}
+  def favorite(category)
+    return nil if ratings.empty?
+    rating_pairs = rated(category).inject([]) do |pairs, item|
+      pairs << [item, rating_average(category, item)]
+    end
+    rating_pairs.sort_by { |s| s.last }.last.first
+  end
 
-    # Palautetaan hashin suurin avain
-    hash.max_by{|k,v| v}[0]
+  private
+
+  def rating_average(category, item)
+    ratings_of_item = ratings.select { |r| r.beer.send(category)==item }
+    return 0 if ratings_of_item.empty?
+    ratings_of_item.inject(0.0) { |sum, r| sum+r.score } / ratings_of_item.count
+  end
+
+  def rated(category)
+    ratings.map { |r| r.beer.send(category) }.uniq
   end
 end

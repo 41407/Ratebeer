@@ -24,6 +24,8 @@ Ratebeer::Application.routes.draw do
 
   resources :breweries
 
+  resources :styles
+
   resources :sessions, only: [:new, :create]
 
   resources :places, only: [:index, :show]

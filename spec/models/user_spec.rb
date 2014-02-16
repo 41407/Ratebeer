@@ -105,7 +105,7 @@ describe User do
     it "is the only rated brewery if only one beer rated" do
       beer = create_beer_with_rating(10, user)
 
-      (user.favorite_brewery).should == beer.brewery.name
+      user.favorite_brewery.should == beer.brewery
     end
 
     it "is the one with highest rating if several rated" do
@@ -114,7 +114,7 @@ describe User do
       best = Beer.create(name: "Testiolut", style:"IPA", brewery: test)
       FactoryGirl.create(:rating, score: 49, beer:best, user:user)
 
-      (user.favorite_brewery).should == best.brewery.name
+      user.favorite_brewery.should == best.brewery
     end
   end
 
