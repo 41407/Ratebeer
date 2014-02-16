@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Beer do
   it "is saved if name and style are set" do
-    beer = Beer.create name:"Testiolut", style: "Lager"
+    FactoryGirl.create :style
+    beer = Beer.create name:"Testiolut", style: (FactoryGirl.create :style)
 
     expect(beer).to be_valid
     expect(Beer.count).to eq(1)
@@ -10,7 +11,7 @@ describe Beer do
   end
   describe "is not created if" do
     it "name is undefined" do
-      beer = Beer.create style: "Lager"
+      beer = Beer.create style: (FactoryGirl.create :style)
 
       expect(beer).not_to be_valid
     end

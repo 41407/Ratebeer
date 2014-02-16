@@ -20,9 +20,9 @@ describe "User page" do
     @ratings = Rating.all
 
     visit user_path(user)
-
     @ratings.each do |rating|
-      expected_content = rating.beer.name + " " + rating.score.to_s
+      expected_content = rating.beer.to_s + " " + rating.score.to_s
+
       if rating.user == user
         expect(page).to have_content expected_content
       else

@@ -86,7 +86,9 @@ describe User do
 
     it "is the one with highest rating if several rated" do
       create_beers_with_ratings(5, 9, 4, 2, 1, user)
-      best = create_beer_with_rating_and_style(49, "IPA", user)
+      test = Brewery.create(name: "AssertEquals", year:1991)
+      best = Beer.create(name: "Testiolut", style:(FactoryGirl.create :style), brewery: test)
+      FactoryGirl.create(:rating, score: 49, beer:best, user:user)
 
       (user.favorite_style).should == best.style
     end
@@ -111,7 +113,7 @@ describe User do
     it "is the one with highest rating if several rated" do
       create_beers_with_ratings(5, 9, 4, 2, 1, user)
       test = Brewery.create(name: "AssertEquals", year:1991)
-      best = Beer.create(name: "Testiolut", style:"IPA", brewery: test)
+      best = Beer.create(name: "Testiolut", style:(FactoryGirl.create :style), brewery: test)
       FactoryGirl.create(:rating, score: 49, beer:best, user:user)
 
       user.favorite_brewery.should == best.brewery

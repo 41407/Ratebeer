@@ -1,26 +1,30 @@
 require 'spec_helper'
+require 'support/own_test_helper'
 
-describe "Beer creation page" do
-  let!(:user) { FactoryGirl.create :user }
-  let!(:brewery) { FactoryGirl.create :brewery, name:"Koff" }
+describe "Beer" do
+  let!(:brewery) { FactoryGirl.create :brewery, name: "Koff" }
+  let!(:style) { FactoryGirl.create :style, name: "whateveer"}
 
   before :each do
+    FactoryGirl.create :user
     sign_in(username: "Pekka", password: "Foobar1")
   end
 
-  it "creates beer if given name is valid" do
+  it "is created when given a valid name" do
     visit new_beer_path
-    fill_in('beer_name', with: 'Koira')
-    expect{
-      click_button 'Create Beer'
-    }.to change{Beer.count}.by(1)
+    fill_in('beer_name', with: 'Arrogant Bastard Ale')
+    expect {
+      click_button('Create Beer')
+    }.to change { Beer.count }.by(1)
   end
 
-  it "if name is invalid, doesn't create new beer and shows error message" do
+  it "is not created with invalid name" do
     visit new_beer_path
-    expect{
-      click_button 'Create Beer'
-    }.to change{Beer.count}.by(0)
+
+    expect {
+      click_button('Create Beer')
+    }.to change { Beer.count }.by(0)
     expect(page).to have_content "Name can't be blank"
+    expect(page).to have_content "New beer"
   end
 end
