@@ -1,12 +1,14 @@
 class BeermappingApi
   def self.places_in(city)
+
     city = city.downcase
     Rails.cache.fetch(city, expires_in: 7.days.from_now) { fetch_places_in(city) }
   end
 
   private
   def self.fetch_places_in(city)
-    url = "http://beermapping.com/webservice/loccity/#{key}/"
+    #    url = "http://beermapping.com/webservice/loccity/#{key}/"
+    url = "http://stark-oasis-9187.herokuapp.com/api/"
 
     response = HTTParty.get "#{url}#{ERB::Util.url_encode(city)}"
     places = response.parsed_response["bmp_locations"]["location"]
@@ -20,7 +22,13 @@ class BeermappingApi
   end
 
   def self.key
-    "ade20ace9dfcd57b0624fb15bb577a88"
+    ENV['APIKEY']
   end
+
+
+  # Joudut luonnollisesti tallettamaan API-avaimen myös herokun konsolista
+  # käsin siinä vaiheessa kun deployaat sovelluksesi uuden version.
+  #
+  # NVM Avain on nyt määritetty herokun ympäristömuuuttujaan.
 end
 

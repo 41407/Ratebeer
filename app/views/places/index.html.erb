@@ -6,16 +6,21 @@
 <% end %>
 
 <% if @places %>
-    <table>
-      <thead>
-      <% Place.rendered_fields.each do |f| %>
-          <td><%= f %></td>
-      <% end %>
-      </thead>
-      <% @places.each do |place| %>
-          <tr>
-            <% Place.rendered_fields.each do |f| %>
-                <td><%= place.send(f) %></td>
+              <table>
+                <thead>
+                <% Place.rendered_fields.each do |f| %>
+                    <td><%= f %></td>
+                <% end %>
+                </thead>
+                <% @places.each do |place| %>
+                    <tr>
+                      <% Place.rendered_fields.each do |f| %>
+                          <td><%= place.send(f) unless f == :name %>
+                  <% if f == :name %>
+                      <%= link_to place.send(f), 'places/' << place.id %>
+                  <% end %>
+                </td>
+
             <% end %>
           </tr>
       <% end %>
