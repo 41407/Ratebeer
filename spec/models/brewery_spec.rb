@@ -10,6 +10,8 @@ describe Brewery do
   end
 
   it "without a name is not valid" do
+    BeerClub
+    BeerClubsController
     brewery = Brewery.create  year:1674
 
     expect(brewery).not_to be_valid
