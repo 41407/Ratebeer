@@ -36,10 +36,29 @@ describe "beerlist page" do
     expect(page).to have_content "Nikolai"
   end
 
-  it "shows beers in alphabetical order by default", :js => true do
-    visit beerlist_path
-    find('table').find('tr:nth-child(2)').should have_content('Fastenbier')
-    find('table').find('tr:nth-child(3)').should have_content('Lechte Weisse')
-    find('table').find('tr:nth-child(4)').should have_content('Nikolai')
+  describe "orders beers by" do
+
+    it "name by default", :js => true do
+      visit beerlist_path
+      find('table').find('tr:nth-child(2)').should have_content('Fastenbier')
+      find('table').find('tr:nth-child(3)').should have_content('Lechte Weisse')
+      find('table').find('tr:nth-child(4)').should have_content('Nikolai')
+    end
+
+    it "style when style header is clicked", :js => true do
+      visit beerlist_path
+      click_link 'style'
+      find('table').find('tr:nth-child(2)').should have_content('Lager')
+      find('table').find('tr:nth-child(3)').should have_content('Rauchbier')
+      find('table').find('tr:nth-child(4)').should have_content('Weizen')
+    end
+
+    it "brewery name when brewery header is clicked", :js => true do
+      visit beerlist_path
+      click_link 'brewery'
+      find('table').find('tr:nth-child(2)').should have_content('Ayinger')
+      find('table').find('tr:nth-child(3)').should have_content('Koff')
+      find('table').find('tr:nth-child(4)').should have_content('Schlenkerla')
+    end
   end
 end
