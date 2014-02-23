@@ -41,6 +41,15 @@ class User < ActiveRecord::Base
     rating_pairs.sort_by { |s| s.last }.last.first
   end
 
+  def self.top_reviewers(n)
+    sorted_by_ratings_in_desc_order = User.all.sort_by { |u| -(u.ratings.count||0) }
+    topn = Array.new
+    for i in 1..n
+      topn.append sorted_by_ratings_in_desc_order[i]
+    end
+    topn
+  end
+
   private
 
   def rating_average(category, item)
