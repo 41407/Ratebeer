@@ -1,13 +1,22 @@
-<h1>Listing users</h1>
+<h1>Users</h1>
 
 <table class="table table-hover">
+  <thead>
+  <th> </th>
+  <th> favorite beer</th>
+  <th> rated beers </th>
+  <th> total ratings </th>
+  </thead>
   <tbody>
   <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.username, user %></td>
-        <td></td>
+        <td><%= link_to user.favorite_beer, user.favorite_beer unless user.favorite_beer.nil?%></td>
+        <td><%= user.beers.size %></td>
+
+        <td><%= user.ratings.size %></td>
+
       </tr>
   <% end %>
   </tbody>
 </table>
-

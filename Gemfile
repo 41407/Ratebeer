@@ -5,6 +5,9 @@ gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
+group :development do
+  gem 'rails_layout'
+end
 
 group :development, :test do
   gem 'sqlite3'
@@ -69,8 +72,5 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'httparty'
 gem "rails-settings-cached", "0.3.1"
 gem 'jquery-turbolinks'
-
+gem 'rack-mini-profiler'
 gem 'bootstrap-sass'
-group :development do
-  gem 'rails_layout'
-end
