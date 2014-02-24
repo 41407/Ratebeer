@@ -12,4 +12,8 @@ class Style < ActiveRecord::Base
     end
     topn
   end
+
+  def to_s
+    name
+  end
 end
