@@ -6,7 +6,7 @@ class Rating < ActiveRecord::Base
 
   scope :recent, order("updated_at desc").limit(5)
 
-  belongs_to :beer
+  belongs_to :beer, touch: true
   belongs_to :user # rating kuuluu myös käyttäjään
 
 
